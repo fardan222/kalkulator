@@ -1,0 +1,157 @@
+/* === GAYA UMUM UNTUK SELURUH HALAMAN === */
+body {
+  font-family: 'Segoe UI', sans-serif; /* Mengatur jenis font */
+  margin: 0;
+  padding: 0;
+  background-color: #000; /* Warna latar belakang hitam */
+  color: #fff; /* Warna teks putih */
+  overflow-x: hidden; /* Mencegah scroll horizontal */
+  position: relative;
+}
+
+/* === ANIMASI EFEK KARAKTER JATUH === */
+@keyframes fall {
+  0% { transform: translateY(-100%); opacity: 0; }
+  100% { transform: translateY(100vh); opacity: 1; }
+}
+
+/* Gaya elemen karakter jatuh (angka & huruf) */
+.falling {
+  position: fixed;
+  top: -5%;
+  font-size: 20px;
+  color: #8b5cf6; /* Warna ungu muda */
+  animation: fall linear infinite;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+/* === KOTAK UTAMA (KALKULATOR) === */
+.container {
+  position: relative;
+  max-width: 900px; /* Batas lebar maksimum */
+  margin: auto;
+  margin-top: 3rem;
+  background: rgba(30, 30, 30, 0.9); /* Semi transparan gelap */
+  backdrop-filter: blur(12px); /* Efek blur di latar */
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 20px 40px rgba(139, 92, 246, 0.4); /* Bayangan ungu */
+  transition: all 0.3s ease;
+  animation: fadeIn 1s ease forwards; /* Muncul dengan animasi */
+  z-index: 1;
+}
+
+/* Animasi fade-in untuk container */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === JUDUL UTAMA DI ATAS KALKULATOR === */
+.animated-title {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+  color: #c084fc;
+  text-shadow: 0 0 10px #8b5cf6, 0 0 20px #7c3aed; /* Efek neon glow */
+}
+
+/* === LABEL-FORM === */
+label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 600;
+  color: #c4b5fd; /* Warna ungu terang */
+}
+
+/* === INPUT, SELECT, BUTTON (GAYA SERAGAM) === */
+input,
+select,
+button {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 0.5rem;
+  border: 1px solid #5b21b6; /* Garis ungu tua */
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  background-color: #1f1b2e; /* Ungu gelap */
+  color: #fff;
+}
+
+/* === TOMBOL UTAMA (HITUNG & RESET) === */
+button {
+  background: linear-gradient(to right, #8b5cf6, #7c3aed); /* Gradasi ungu */
+  color: white;
+  border: none;
+  margin-top: 1.5rem;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.5); /* Bayangan lembut */
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px); /* Efek hover naik sedikit */
+  background: linear-gradient(to right, #a78bfa, #9333ea); /* Gradasi berubah */
+}
+
+/* === TABEL HASIL ITERASI === */
+.result-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2rem;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(139, 92, 246, 0.2); /* Shadow ungu */
+  z-index: 1;
+  background-color: #18181b; /* Warna dasar tabel */
+}
+
+/* Bagian kepala tabel */
+.result-table thead {
+  background: linear-gradient(to right, #9333ea, #8b5cf6); /* Gradasi kepala tabel */
+}
+
+/* Header kolom */
+.result-table th {
+  padding: 0.85rem;
+  font-size: 1rem;
+  color: white;
+  font-weight: bold;
+  border: none;
+}
+
+/* Isi tabel */
+.result-table td {
+  padding: 0.75rem;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #e4e4e7;
+  border-bottom: 1px solid #302e3a;
+}
+
+/* Hover efek baris */
+.result-table tr:hover {
+  background-color: #312e81;
+  transition: background-color 0.3s ease;
+}
+
+/* === RESPONSIF UNTUK LAYAR KECIL === */
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .result-table th,
+  .result-table td {
+    font-size: 0.85rem;
+    padding: 0.5rem;
+  }
+
+  .animated-title {
+    font-size: 1.6rem;
+  }
+}
