@@ -1,84 +1,94 @@
 <!DOCTYPE html>
+<!-- Mendeklarasikan bahwa dokumen ini menggunakan HTML5 -->
 <html lang="id">
+<!-- Bahasa utama dokumen adalah Bahasa Indonesia -->
 <head>
   <meta charset="UTF-8" />
-  <!-- Meta charset UTF-8 agar teks mendukung karakter -->
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Responsif: memastikan tampilan menyesuaikan ukuran layar -->
-
+  <!-- Mengatur encoding karakter ke UTF-8 agar karakter internasional bisa ditampilkan -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- Membuat halaman responsif di semua ukuran layar, terutama mobile -->
   <title>Kalkulator Regula Falsi & Secant</title>
-  <!-- Judul halaman web -->
-
+  <!-- Judul halaman yang ditampilkan di tab browser -->
   <link rel="stylesheet" href="style.css" />
-  <!-- Menghubungkan file CSS eksternal untuk desain/tampilan -->
+  <!-- Menyisipkan file CSS eksternal untuk styling halaman -->
 </head>
 <body>
   <div class="container">
-    <!-- Container utama untuk membungkus seluruh isi -->
+    <!-- Container utama untuk seluruh konten kalkulator -->
 
     <h2 class="animated-title">Kalkulator Regula Falsi dan Secant</h2>
-    <!-- Judul utama dengan animasi (stylenya ada di CSS) -->
-
-    <!-- === Form Input Bagian Atas === -->
+    <!-- Judul halaman yang tampil dengan animasi (diatur di CSS) -->
 
     <label for="method">Pilih Metode:</label>
-    <!-- Label dropdown pilihan metode -->
+    <!-- Label untuk dropdown metode numerik -->
     <select id="method">
-      <!-- Dropdown untuk memilih metode numerik -->
+      <!-- Dropdown pilihan metode -->
       <option value="regula">Regula Falsi</option>
       <option value="secant">Secant</option>
     </select>
 
     <label for="func">Fungsi (gunakan x):</label>
-    <!-- Label dan input untuk memasukkan fungsi matematika -->
+    <!-- Label untuk input fungsi matematika -->
     <input type="text" id="func" value="x^3 - x - 2" />
-    <!-- Default fungsi: x^3 - x - 2 -->
+    <!-- Input teks untuk memasukkan fungsi (format mathjs) -->
 
     <label for="a">Batas a atau Xr - 1:</label>
-    <!-- Batas bawah (a) atau Xr-1 untuk metode Secant -->
+    <!-- Label untuk batas bawah atau nilai sebelumnya (Xr-1) -->
     <input type="number" id="a" value="1" />
+    <!-- Input angka untuk nilai a -->
 
     <label for="b">Batas b atau Xr:</label>
-    <!-- Batas atas (b) atau Xr untuk metode Secant -->
+    <!-- Label untuk batas atas atau nilai sekarang (Xr) -->
     <input type="number" id="b" value="2" />
+    <!-- Input angka untuk nilai b -->
 
     <label for="tol">Toleransi Error:</label>
-    <!-- Input toleransi kesalahan -->
+    <!-- Label untuk input toleransi error -->
     <input type="number" id="tol" value="0.01" />
+    <!-- Input angka untuk toleransi error -->
 
-    <!-- === Tombol Aksi === -->
     <button onclick="calculate()">Hitung</button>
-    <!-- Memanggil fungsi `calculate()` saat tombol diklik -->
+    <!-- Tombol untuk menjalankan perhitungan (memanggil fungsi calculate di JS) -->
 
-    <button class="reset-btn" onclick="resetForm()">Reset</button>
-    <!-- Tombol reset form, memanggil `resetForm()` -->
+    <button onclick="resetForm()">Reset</button>
+    <!-- Tombol untuk menghapus input dan hasil (memanggil fungsi resetForm di JS) -->
 
-    <!-- Loader animasi untuk saat sedang proses perhitungan -->
-    <div id="loader" class="loader" style="display: none;"></div>
+    <div id="loader" class="loader"></div>
+    <!-- Elemen loader animasi (spinner) saat sedang menghitung -->
 
-    <!-- Output hasil iterasi ditampilkan di sini -->
+    <div id="loadingText" class="loading-text">Menghitung... mohon tunggu 🤓</div>
+    <!-- Teks animasi loading saat proses perhitungan berlangsung -->
+
     <div id="output"></div>
+    <!-- Tempat menampilkan hasil perhitungan dalam bentuk tabel -->
   </div>
 
-  <!-- === Efek Visual: Karakter Jatuh seperti "Matrix" === -->
+  <!-- Efek karakter jatuh -->
   <script>
     const chars = "xXyY0123456789";
+    // Daftar karakter yang akan dijatuhkan secara acak
     for (let i = 0; i < 50; i++) {
       const el = document.createElement("div");
-      el.classList.add("falling"); // Gaya animasi ditentukan di CSS
-      el.style.left = `${Math.random() * 100}vw`; // Posisi acak horizontal
-      el.style.fontSize = `${12 + Math.random() * 20}px`; // Ukuran acak
-      el.style.animationDuration = `${5 + Math.random() * 5}s`; // Durasi jatuh
+      // Membuat elemen <div> baru untuk tiap karakter jatuh
+      el.classList.add("falling");
+      // Menambahkan class "falling" untuk animasi jatuh (diatur di CSS)
+      el.style.left = `${Math.random() * 100}vw`;
+      // Menentukan posisi horizontal secara acak
+      el.style.fontSize = `${12 + Math.random() * 20}px`;
+      // Mengatur ukuran font secara acak
+      el.style.animationDuration = `${5 + Math.random() * 5}s`;
+      // Mengatur durasi animasi jatuh secara acak
       el.textContent = chars[Math.floor(Math.random() * chars.length)];
-      document.body.appendChild(el); // Ditambahkan ke body
+      // Menentukan karakter yang akan ditampilkan secara acak
+      document.body.appendChild(el);
+      // Menambahkan elemen ke dalam <body>
     }
   </script>
 
-  <!-- Library Math.js untuk menghitung fungsi matematika secara dinamis -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.1/math.min.js"></script>
+  <!-- Memuat library Math.js untuk menghitung fungsi matematika -->
 
-  <!-- Script utama logika perhitungan metode regula falsi / secant -->
   <script src="script.js"></script>
+  <!-- Memuat file JavaScript eksternal yang berisi logika kalkulasi -->
 </body>
 </html>
