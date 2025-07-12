@@ -88,7 +88,7 @@ function calculate() {
     
     // Sembunyikan animasi loading
     hideLoader();
-  }, 3000); // Delay 3 detik agar animasi sempat muncul
+  }, 4000); // Delay 3 detik agar animasi sempat muncul
 }
 
 // Fungsi untuk mereset seluruh input dan output ke keadaan awal
