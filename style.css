@@ -1,87 +1,77 @@
-/* === GAYA UMUM UNTUK SELURUH HALAMAN === */
 body {
-  font-family: 'Segoe UI', sans-serif; /* Mengatur jenis font */
+  /* Mengatur font utama halaman, menghilangkan margin & padding default browser */
+  font-family: 'Segoe UI', sans-serif;
   margin: 0;
   padding: 0;
   background-color: #000; /* Warna latar belakang hitam */
-  color: #fff; /* Warna teks putih */
-  overflow-x: hidden; /* Mencegah scroll horizontal */
-  position: relative;
+  color: #fff; /* Warna teks default putih */
+  overflow-x: hidden; /* Mencegah scroll horizontal jika konten meluber ke samping */
+  position: relative; /* Untuk posisi relatif elemen anak jika diperlukan */
 }
 
-/* === ANIMASI EFEK KARAKTER JATUH === */
+/* Animasi keyframes untuk efek karakter jatuh dari atas ke bawah layar */
 @keyframes fall {
-  0% { transform: translateY(-100%); opacity: 0; }
-  100% { transform: translateY(100vh); opacity: 1; }
+  0% { transform: translateY(-100%); opacity: 0; } /* Mulai di luar layar dan transparan */
+  100% { transform: translateY(100vh); opacity: 1; } /* Berakhir di bawah layar dan terlihat */
 }
 
-/* Gaya elemen karakter jatuh (angka & huruf) */
+/* Gaya untuk karakter yang jatuh */
 .falling {
-  position: fixed;
-  top: -5%;
+  position: fixed; /* Posisi tetap di layar */
+  top: -5%; /* Mulai sedikit di atas layar */
   font-size: 20px;
-  color: #8b5cf6; /* Warna ungu muda */
-  animation: fall linear infinite;
-  z-index: 0;
-  opacity: 0.4;
+  color: #8b5cf6; /* Warna ungu cerah */
+  animation: fall linear infinite; /* Jalankan animasi jatuh secara terus-menerus dan linear */
+  z-index: 0; /* Di belakang elemen lain */
+  opacity: 0.4; /* Semi-transparan */
 }
 
-/* === KOTAK UTAMA (KALKULATOR) === */
+/* Kontainer utama kalkulator */
 .container {
   position: relative;
-  max-width: 900px; /* Batas lebar maksimum */
-  margin: auto;
-  margin-top: 3rem;
-  background: rgba(30, 30, 30, 0.9); /* Semi transparan gelap */
-  backdrop-filter: blur(12px); /* Efek blur di latar */
-  border-radius: 15px;
+  max-width: 900px; /* Lebar maksimum */
+  margin: auto; /* Pusatkan secara horizontal */
+  margin-top: 3rem; /* Jarak dari atas */
+  background: rgba(30, 30, 30, 0.9); /* Latar belakang semi transparan abu-abu gelap */
+  backdrop-filter: blur(12px); /* Blur latar belakang (jika browser mendukung) */
+  border-radius: 15px; /* Sudut membulat */
   padding: 2rem;
-  box-shadow: 0 20px 40px rgba(139, 92, 246, 0.4); /* Bayangan ungu */
-  transition: all 0.3s ease;
-  animation: fadeIn 1s ease forwards; /* Muncul dengan animasi */
-  z-index: 1;
+  box-shadow: 0 20px 40px rgba(139, 92, 246, 0.4); /* Efek bayangan ungu */
+  z-index: 1; /* Di atas elemen animasi jatuh */
 }
 
-/* Animasi fade-in untuk container */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* === JUDUL UTAMA DI ATAS KALKULATOR === */
+/* Judul utama dengan animasi cahaya ungu */
 .animated-title {
   text-align: center;
   font-size: 2.2rem;
   margin-bottom: 1.5rem;
   font-weight: bold;
-  color: #c084fc;
-  text-shadow: 0 0 10px #8b5cf6, 0 0 20px #7c3aed; /* Efek neon glow */
+  color: #c084fc; /* Warna teks ungu muda */
+  text-shadow: 0 0 10px #8b5cf6, 0 0 20px #7c3aed; /* Efek cahaya neon */
 }
 
-/* === LABEL-FORM === */
+/* Label form (untuk input dan select) */
 label {
   display: block;
   margin-top: 1rem;
   font-weight: 600;
-  color: #c4b5fd; /* Warna ungu terang */
+  color: #c4b5fd; /* Ungu muda */
 }
 
-/* === INPUT, SELECT, BUTTON (GAYA SERAGAM) === */
-input,
-select,
-button {
+/* Input, select, dan tombol memiliki style yang konsisten */
+input, select, button {
   width: 100%;
   padding: 0.6rem;
   margin-top: 0.5rem;
-  border: 1px solid #5b21b6; /* Garis ungu tua */
+  border: 1px solid #5b21b6; /* Border ungu gelap */
   border-radius: 8px;
   box-sizing: border-box;
   font-size: 1rem;
-  background-color: #1f1b2e; /* Ungu gelap */
+  background-color: #1f1b2e; /* Latar belakang gelap */
   color: #fff;
 }
 
-/* === TOMBOL UTAMA (HITUNG & RESET) === */
+/* Tombol utama */
 button {
   background: linear-gradient(to right, #8b5cf6, #7c3aed); /* Gradasi ungu */
   color: white;
@@ -89,69 +79,87 @@ button {
   margin-top: 1.5rem;
   cursor: pointer;
   font-weight: bold;
-  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.5); /* Bayangan lembut */
-  transition: transform 0.2s ease, background 0.2s ease;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.5); /* Bayangan ungu */
+  transition: transform 0.2s ease, background 0.2s ease; /* Efek saat hover */
 }
 
+/* Efek hover pada tombol */
 button:hover {
-  transform: translateY(-2px); /* Efek hover naik sedikit */
-  background: linear-gradient(to right, #a78bfa, #9333ea); /* Gradasi berubah */
+  transform: translateY(-2px); /* Tombol sedikit naik */
+  background: linear-gradient(to right, #a78bfa, #9333ea); /* Gradasi lebih terang */
 }
 
-/* === TABEL HASIL ITERASI === */
+/* Tabel hasil iterasi */
 .result-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 2rem;
   border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 12px 30px rgba(139, 92, 246, 0.2); /* Shadow ungu */
-  z-index: 1;
-  background-color: #18181b; /* Warna dasar tabel */
+  overflow: hidden; /* Agar sudut tabel tetap membulat */
+  box-shadow: 0 12px 30px rgba(139, 92, 246, 0.2); /* Bayangan tabel */
+  background-color: #18181b; /* Latar tabel gelap */
 }
 
-/* Bagian kepala tabel */
+/* Header tabel dengan gradasi ungu */
 .result-table thead {
-  background: linear-gradient(to right, #9333ea, #8b5cf6); /* Gradasi kepala tabel */
+  background: linear-gradient(to right, #9333ea, #8b5cf6);
 }
 
-/* Header kolom */
-.result-table th {
-  padding: 0.85rem;
-  font-size: 1rem;
-  color: white;
-  font-weight: bold;
-  border: none;
-}
-
-/* Isi tabel */
+/* Gaya kolom tabel */
+.result-table th,
 .result-table td {
-  padding: 0.75rem;
+  padding: 0.85rem;
   text-align: center;
   font-size: 0.95rem;
+  border-bottom: 1px solid #302e3a; /* Garis pemisah baris */
+}
+
+/* Warna teks isi tabel */
+.result-table td {
   color: #e4e4e7;
-  border-bottom: 1px solid #302e3a;
 }
 
-/* Hover efek baris */
+/* Efek hover baris tabel */
 .result-table tr:hover {
-  background-color: #312e81;
-  transition: background-color 0.3s ease;
+  background-color: #312e81; /* Ungu saat di-hover */
 }
 
-/* === RESPONSIF UNTUK LAYAR KECIL === */
+/* Animasi loading berbentuk lingkaran berputar */
+.loader {
+  border: 6px solid #2e1065; /* Lingkaran dasar */
+  border-top: 6px solid #a78bfa; /* Warna bagian atas yang berputar */
+  border-radius: 50%; /* Bentuk bulat */
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite; /* Animasi putar */
+  margin: 2rem auto;
+  display: none; /* Awalnya disembunyikan */
+}
+
+/* Keyframe animasi spin */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Teks "menghitung..." yang tampil saat loading */
+.loading-text {
+  text-align: center;
+  color: #a78bfa;
+  display: none; /* Awalnya disembunyikan */
+}
+
+/* Media query untuk tampilan layar kecil seperti HP */
 @media screen and (max-width: 768px) {
   .container {
     padding: 1rem;
   }
-
+  .animated-title {
+    font-size: 1.6rem;
+  }
   .result-table th,
   .result-table td {
     font-size: 0.85rem;
     padding: 0.5rem;
-  }
-
-  .animated-title {
-    font-size: 1.6rem;
   }
 }
